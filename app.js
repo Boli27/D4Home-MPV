@@ -2,16 +2,14 @@ const express = require('express');
 const sequelize = require('./config/database');
 const scrapingRoutes = require('./routes/scrapingRoutes');
 const visualizationRoutes = require('./routes/verRoutes');
-const path = require('path');
-const app = express();
-const cors = require('cors');
 
-// Activar CORS para todas las rutas
+const app = express();
+
+const cors = require('cors');
 app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 
-// Usar las rutas de scraping
 app.use('/api', scrapingRoutes);
 app.use('/api', visualizationRoutes);
 

@@ -9,7 +9,7 @@ const scrapeAndSave = async (req, res) => {
         const fincaRaizData = await scrapeFincaRaiz();
         await Promise.all(fincaRaizData.map(async (property) => {
             // Verificar si ya existe una propiedad con la misma ciudad y precio
-            const existingProperty = await Property.findOne({ where: { city: property.city, price: property.price, source: 'Finca Raíz' } });
+            const existingProperty = await Property.findOne({ where: { city: property.city, price: property.price, habs: property.habs, source: 'Finca Raíz' } });
             if (!existingProperty) {
                 await Property.create({ ...property, source: 'Finca Raíz' });
             }
@@ -27,7 +27,7 @@ const scrapeAndSave = async (req, res) => {
         // Scraping Cien Cuadras
         const cienCuadrasData = await scrapeCienCuadras();
         await Promise.all(cienCuadrasData.map(async (property) => {
-            const existingProperty = await Property.findOne({ where: { city: property.city, price: property.price, source: 'Cien Cuadras' } });
+            const existingProperty = await Property.findOne({ where: { city: property.city, price: property.price, habs: property.habs, source: 'Cien Cuadras' } });
             if (!existingProperty) {
                 await Property.create({ ...property, source: 'Cien Cuadras' });
             }

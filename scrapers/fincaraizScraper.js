@@ -14,8 +14,16 @@ const scrapeFincaRaiz = async () => {
             const parts = location.split(', ');
             const city = parts.length >= 2 ? parts[1] : '';
             const price = parseFloat(priceText.replace(/[^0-9]/g, ''));
+            
+            // Selección específica del <strong> que contiene "Habs"
+            const roomsElement = Array.from(element.querySelectorAll('strong')).find(el => 
+                el.innerText.includes('Habs')
+            );
+            const roomsText = roomsElement?.innerText.trim() || '';
+            const habs = parseInt(roomsText.replace(/[^0-9]/g, '')) || 0;
+
             if (price!=0 && city) {
-                data.push({ price, city })
+                data.push({ price, city, habs })
             };
         });
         return data;

@@ -1,14 +1,15 @@
 const { Property } = require('../models/Property');
-const moment = require('moment');
 
 const getVisualizationData = async (req, res) => {
     try {
         const properties = await Property.findAll();
 
-        // Crear un array de objetos con ciudad y precio
+        // Crear un array de objetos con ciudad, precio, habitaciones y source
         const rentals = properties.map(p => ({
             city: p.city,
-            price: p.price
+            price: p.price,
+            habs: p.habs, // Cambié 'habs' a 'rooms' para mayor claridad en la API
+            source: p.source // Agregamos la fuente
         }));
 
         // Devolver los datos en formato JSON
@@ -19,3 +20,4 @@ const getVisualizationData = async (req, res) => {
 };
 
 module.exports = { getVisualizationData };
+

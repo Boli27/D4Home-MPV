@@ -8,23 +8,40 @@
 </head>
 <body>
   <h1>Precios de Alquiler por Ciudad</h1>
+
+  <!-- Filtro de ciudades -->
+  <label for="cityFilter">Filtrar por ciudad:</label>
+  <select id="cityFilter">
+    <option value="all">Todas las ciudades</option>
+  </select>
+
   <canvas id="rentChart" width="400" height="200"></canvas>
 
-  <h2>Datos de Alquileres</h2>
+  <h2>Datos de Alquileres en tabla</h2>
+    <!-- Filtro de orden -->
+    <label for="orderFilter">Ordenar precios:</label>
+    <select id="orderFilter">
+      <option value="none">Sin ordenar</option>
+      <option value="asc">Menor a mayor</option>
+      <option value="desc">Mayor a menor</option>
+    </select>
   <table id="rentalTable">
     <thead>
       <tr>
         <th>Ciudad</th>
         <th>Precio</th>
-
+        <th>Cant. Habitaciones</th>
+        <th>Fuente</th>
       </tr>
     </thead>
     <tbody>
       <!-- Los datos se llenarán aquí dinámicamente -->
     </tbody>
   </table>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="../public/javascript/chart.js"></script> <!-- Para cargar las gráficas -->
   <script src="../public/javascript/table.js"></script> <!-- Para cargar la tabla de datos -->
+  
 </body>
 </html>

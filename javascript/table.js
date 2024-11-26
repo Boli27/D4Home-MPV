@@ -1,5 +1,5 @@
 async function fetchRentalData() {
-  const response = await fetch('http://localhost:3000/api/ver');
+  const response = await fetch('https://28l3dkpq-3000.use2.devtunnels.ms/api/ver');
   if (!response.ok) {
       throw new Error('Network response was not ok');
   }
